@@ -41,14 +41,14 @@ class ImportTransactionsService {
 
     const createTransaction = new CreateTransactionService();
 
-    csv.forEach(line => {
-      createTransaction.execute({
+    for (const line of csv) {
+      await createTransaction.execute({
         title: line[0],
         type: line[1],
         value: Number(line[2]),
         category: line[3],
       });
-    });
+    }
   }
 }
 
